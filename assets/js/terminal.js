@@ -2,11 +2,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const container = document.querySelector('.container');
     const originalContent = container.innerHTML;
     
-    // Extraer solo el texto visible
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = originalContent;
-    const visibleText = tempDiv.textContent || tempDiv.innerText;
-    
     // Preparar el contenedor para la animación
     container.innerHTML = '<div id="animated-text"></div><div class="blink">> _</div>';
     const animatedTextElement = document.getElementById('animated-text');
@@ -40,9 +35,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     
     // Iniciar la animación
-    const title = document.querySelector('h1').textContent;
+    const title = document.querySelector('title').textContent;
     const welcomeMessage = "Bienvenido al terminal. Cargando contenido...";
     const textToAnimate = `> ${title}\n\n${welcomeMessage}`;
     
+    // Comenzar la animación inmediatamente
     animateText(textToAnimate, 1500); // 1.5 segundos para la animación
 });
