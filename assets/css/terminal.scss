@@ -6,6 +6,7 @@ $text-color: #0f0;
 $link-color: #0ff;
 $highlight-color: #ff0;
 $date-color: #888;
+$nav-hover-color: #003300;
 
 body {
     background-color: $bg-color;
@@ -50,40 +51,78 @@ a {
 
 nav {
     margin-bottom: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: rgba(0, 255, 0, 0.1);
+    padding: 0.5em;
+    border-radius: 5px;
+
     a {
-        margin-right: 1em;
-        padding: 0.3em 0.5em;
+        margin: 0.3em;
+        padding: 0.5em 1em;
         border: 1px solid $text-color;
+        border-radius: 3px;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        color: $text-color;
+
+        &:before {
+            content: '>';
+            margin-right: 0.5em;
+            color: $highlight-color;
+        }
+
         &:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: $nav-hover-color;
             text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 255, 0, 0.2);
+
+            &:after {
+                content: attr(href);
+                position: absolute;
+                bottom: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: $bg-color;
+                color: $link-color;
+                padding: 5px;
+                border-radius: 3px;
+                font-size: 0.8em;
+                white-space: nowrap;
+            }
+        }
+
+        &.active {
+            background-color: rgba(0, 255, 0, 0.2);
+            font-weight: bold;
         }
     }
 }
 
 .post-meta {
-    color: $date-color; // Cambiado de $highlight-color a $date-color
+    color: $date-color;
     margin-bottom: 1em;
 }
 
 .recent-posts {
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
     li {
         margin-bottom: 1em;
         span {
-            color: $date-color; // Cambiado de $highlight-color a $date-color
+            color: $date-color;
             margin-right: 1em;
         }
     }
 }
 
-
 .post {
     margin-bottom: 2em;
-    .post-meta {
-        color: $highlight-color;
-        margin-bottom: 1em;
-    }
 }
 
 footer {
@@ -99,14 +138,12 @@ footer {
     }
 }
 
-// Estilo para código en línea
 code {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 0.2em 0.4em;
     border-radius: 3px;
 }
 
-// Estilo para bloques de código
 pre {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 1em;
@@ -114,7 +151,6 @@ pre {
     border: 1px solid $text-color;
 }
 
-// Mejorar la legibilidad de las tablas
 table {
     border-collapse: collapse;
     width: 100%;
@@ -129,7 +165,6 @@ table {
     }
 }
 
-// Estilo para citas
 blockquote {
     border-left: 3px solid $link-color;
     padding-left: 1em;
@@ -151,26 +186,28 @@ blockquote {
     50%, 100% { opacity: 1; }
 }
 
-// Estilos adicionales para mejorar la experiencia en dispositivos móviles
 @media (max-width: 600px) {
     body {
         font-size: 12px;
         padding: 10px;
     }
 
-    nav a {
-        display: block;
-        margin-bottom: 0.5em;
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+
+        a {
+            margin: 0.2em 0;
+            text-align: center;
+        }
     }
 }
 
-// Estilo para resaltar la selección de texto
 ::selection {
     background: $link-color;
     color: $bg-color;
 }
 
-// Estilo para scrollbar personalizado
 ::-webkit-scrollbar {
     width: 8px;
 }
