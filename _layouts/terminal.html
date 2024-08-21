@@ -8,48 +8,58 @@ layout: default
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ site.title }}</title>
     <link rel="stylesheet" href="{{ "/assets/css/terminal.css" | relative_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>{{ site.title }}</h1>
+            <div class="terminal-header">
+                <span class="terminal-button close"></span>
+                <span class="terminal-button minimize"></span>
+                <span class="terminal-button maximize"></span>
+                <h1>{{ site.title }}</h1>
+            </div>
             <nav>
-                <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Inicio</a>
-                <a href="/about/" {% if page.url == "/about/" %}class="active"{% endif %}>Acerca de</a>
-                <a href="/blog/" {% if page.url == "/blog/" %}class="active"{% endif %}>Blog</a>
-                <a href="/contact/" {% if page.url == "/contact/" %}class="active"{% endif %}>Contacto</a>
-              </nav>
+                <a href="/" {% if page.url == "/" %}class="active"{% endif %}>$ cd ~/home</a>
+                <a href="/about/" {% if page.url == "/about/" %}class="active"{% endif %}>$ cat about.txt</a>
+                <a href="/blog/" {% if page.url == "/blog/" %}class="active"{% endif %}>$ ls blog/</a>
+                <a href="/contact/" {% if page.url == "/contact/" %}class="active"{% endif %}>$ mail contact</a>
+            </nav>
         </header>
         <main>
-            {{ content }}
+            <div class="terminal-content">
+                {{ content }}
             
-            {% if page.url == "/" %}
-            <section class="recent-posts">
-                <h2>&gt; RECENT_POSTS</h2>
-                <ul>
-                {% for post in site.posts limit:5 %}
-                    <li>
-                        <span>[{{ post.date | date: "%Y-%m-%d" }}]</span>
-                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                    </li>
-                {% endfor %}
-                </ul>
-                <a href="{{ '/blog' | relative_url }}">[VER_TODOS_LOS_POSTS]</a>
-            </section>
-            {% endif %}
+                {% if page.url == "/" %}
+                <section class="recent-posts">
+                    <h2>> ls recent_posts/</h2>
+                    <ul>
+                    {% for post in site.posts limit:5 %}
+                        <li>
+                            <span class="post-date">[{{ post.date | date: "%Y-%m-%d" }}]</span>
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <a href="{{ '/blog' | relative_url }}" class="view-all-posts">> more posts.sh</a>
+                </section>
+                {% endif %}
+            </div>
         </main>
         <footer>
-            <p>&copy; {{ site.time | date: '%Y' }} {{ site.title | upcase }} | <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-            <p>
+            <p class="copyright">&copy; {{ site.time | date: '%Y' }} {{ site.title | upcase }}</p>
+            <p class="contact">
+                <a href="mailto:{{ site.email }}">$ mail {{ site.email }}</a>
                 {% if site.github_username %}
-                <a href="https://github.com/{{ site.github_username }}">[GITHUB]</a>
+                <a href="https://github.com/{{ site.github_username }}">$ git clone github.com/{{ site.github_username }}</a>
                 {% endif %}
                 {% if site.twitter_username %}
-                <a href="https://twitter.com/{{ site.twitter_username }}">[TWITTER]</a>
+                <a href="https://twitter.com/{{ site.twitter_username }}">$ tweet @{{ site.twitter_username }}</a>
                 {% endif %}
             </p>
         </footer>
     </div>
+    <div class="cursor"></div>
     <script src="{{ "/assets/js/terminal.js" | relative_url }}"></script>
 </body>
 </html>

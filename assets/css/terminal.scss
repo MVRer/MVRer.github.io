@@ -1,110 +1,195 @@
 ---
 ---
-
 $bg-color: #000;
-$text-color: #0f0;
-$link-color: #0ff;
-$highlight-color: #ff0;
+$text-color: #00ff00;
+$link-color: #00ffff;
+$highlight-color: #ffff00;
 $date-color: #888;
-$nav-hover-color: #003300;
+$terminal-header: #333;
+$code-bg: #1a1a1a;
 
 body {
     background-color: $bg-color;
     color: $text-color;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
-    overflow-x: hidden;
+    cursor: none;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid $text-color;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.terminal-header {
+    background-color: $terminal-header;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    h1 {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 1.2em;
+        color: $text-color;
+    }
 }
 
-h1, h2, h3 {
-    color: $text-color;
-    text-transform: uppercase;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.close { background-color: #ff5f56; }
+.minimize { background-color: #ffbd2e; }
+.maximize { background-color: #27c93f; }
+
+nav {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: rgba(0, 255, 0, 0.1);
+    a {
+        color: $text-color;
+        text-decoration: none;
+        padding: 5px 10px;
+        border: 1px solid $text-color;
+        border-radius: 5px;
+        margin: 5px;
+        transition: all 0.3s ease;
+        &:hover, &.active {
+            background-color: $text-color;
+            color: $bg-color;
+        }
+    }
+}
+
+.terminal-content {
+    padding: 20px;
+
+    // Estilos para elementos Markdown
+    h1, h2, h3, h4, h5, h6 {
+        color: $highlight-color;
+        border-bottom: 1px solid $text-color;
+        padding-bottom: 5px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.75em; }
+    h3 { font-size: 1.5em; }
+    h4 { font-size: 1.25em; }
+    h5 { font-size: 1.1em; }
+    h6 { font-size: 1em; }
+
+    p {
+        margin-bottom: 15px;
+    }
+
+    ul, ol {
+        margin-bottom: 15px;
+        padding-left: 30px;
+    }
+
+    ul {
+        list-style-type: none;
+        li::before {
+            content: "> ";
+            color: $highlight-color;
+        }
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    blockquote {
+        border-left: 3px solid $link-color;
+        padding-left: 15px;
+        margin: 15px 0;
+        font-style: italic;
+        color: darken($text-color, 15%);
+    }
+
+    code {
+        font-family: 'Courier New', monospace;
+        background-color: $code-bg;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    pre {
+        background-color: $code-bg;
+        border: 1px solid $text-color;
+        border-radius: 5px;
+        padding: 15px;
+        overflow-x: auto;
+        margin-bottom: 15px;
+
+        code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+
+        th, td {
+            border: 1px solid $text-color;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid $text-color;
+        margin: 20px 0;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 15px auto;
+        border: 1px solid $text-color;
+        border-radius: 5px;
+    }
+}
+
+h2 {
+    color: $highlight-color;
+    border-bottom: 1px solid $text-color;
+    padding-bottom: 10px;
 }
 
 a {
     color: $link-color;
     text-decoration: none;
-    cursor: pointer;
     transition: color 0.3s ease;
     &:hover {
-        text-decoration: underline;
         color: lighten($link-color, 20%);
     }
-}
-
-nav {
-    margin-bottom: 2em;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    background-color: rgba(0, 255, 0, 0.1);
-    padding: 0.5em;
-    border-radius: 5px;
-
-    a {
-        margin: 0.3em;
-        padding: 0.5em 1em;
-        border: 1px solid $text-color;
-        border-radius: 3px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        color: $text-color;
-
-        &:before {
-            content: '>';
-            margin-right: 0.5em;
-            color: $highlight-color;
-        }
-
-        &:hover {
-            background-color: $nav-hover-color;
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0, 255, 0, 0.2);
-
-            &:after {
-                content: attr(href);
-                position: absolute;
-                bottom: -30px;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: $bg-color;
-                color: $link-color;
-                padding: 5px;
-                border-radius: 3px;
-                font-size: 0.8em;
-                white-space: nowrap;
-            }
-        }
-
-        &.active {
-            background-color: rgba(0, 255, 0, 0.2);
-            font-weight: bold;
-        }
-    }
-}
-
-.post-meta {
-    color: $date-color;
-    margin-bottom: 1em;
 }
 
 .recent-posts {
@@ -113,103 +198,70 @@ nav {
         padding: 0;
     }
     li {
-        margin-bottom: 1em;
-        span {
-            color: $date-color;
-            margin-right: 1em;
-        }
+        margin-bottom: 10px;
+    }
+    .post-date {
+        color: $date-color;
+        margin-right: 10px;
     }
 }
 
-.post {
-    margin-bottom: 2em;
+.view-all-posts {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border: 1px solid $link-color;
+    border-radius: 5px;
+    &:hover {
+        background-color: $link-color;
+        color: $bg-color;
+    }
 }
 
 footer {
-    margin-top: 3em;
-    padding-top: 1em;
     border-top: 1px solid $text-color;
+    padding: 20px;
+    text-align: center;
     font-size: 0.9em;
     p {
-        margin-bottom: 0.5em;
+        margin: 5px 0;
     }
     a {
-        margin-right: 1em;
+        margin: 0 10px;
     }
 }
 
-code {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-}
-
-pre {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1em;
-    overflow-x: auto;
-    border: 1px solid $text-color;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 1em;
-    th, td {
-        border: 1px solid $text-color;
-        padding: 0.5em;
-        text-align: left;
-    }
-    th {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-}
-
-blockquote {
-    border-left: 3px solid $link-color;
-    padding-left: 1em;
-    margin-left: 0;
-    font-style: italic;
-    color: darken($text-color, 10%);
-}
-
-#animated-text {
-    white-space: pre-wrap;
-}
-
-.blink {
-    animation: blink 1s infinite;
+.cursor {
+    width: 10px;
+    height: 20px;
+    background-color: $text-color;
+    position: fixed;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    animation: blink 0.7s infinite;
 }
 
 @keyframes blink {
-    0%, 49% { opacity: 0; }
-    50%, 100% { opacity: 1; }
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 @media (max-width: 600px) {
     body {
-        font-size: 12px;
+        font-size: 16px;
         padding: 10px;
     }
-
     nav {
         flex-direction: column;
-        align-items: stretch;
-
         a {
-            margin: 0.2em 0;
-            text-align: center;
+            margin: 5px 0;
         }
     }
 }
 
-::selection {
-    background: $link-color;
-    color: $bg-color;
-}
-
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -218,7 +270,9 @@ blockquote {
 
 ::-webkit-scrollbar-thumb {
     background: $text-color;
-    &:hover {
-        background: $link-color;
-    }
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $link-color;
 }
