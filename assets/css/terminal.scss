@@ -4,7 +4,8 @@
 $bg-color: #000;
 $text-color: #0f0;
 $link-color: #0ff;
-$highlight-color: #999999;
+$highlight-color: #ff0;
+$date-color: #888;
 
 body {
     background-color: $bg-color;
@@ -61,24 +62,21 @@ nav {
     }
 }
 
+.post-meta {
+    color: $date-color; // Cambiado de $highlight-color a $date-color
+    margin-bottom: 1em;
+}
+
 .recent-posts {
-    margin-top: 2em;
-    h2 {
-        border-bottom: 1px solid $text-color;
-        padding-bottom: 0.5em;
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
     li {
         margin-bottom: 1em;
         span {
-            color: $highlight-color;
+            color: $date-color; // Cambiado de $highlight-color a $date-color
             margin-right: 1em;
         }
     }
 }
+
 
 .post {
     margin-bottom: 2em;
