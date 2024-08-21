@@ -106,7 +106,7 @@ nav {
         list-style-type: none;
         li::before {
             content: "> ";
-            color: $highlight-color;
+            color: $text-color;
         }
     }
 
@@ -232,13 +232,7 @@ footer {
 }
 
 .cursor {
-    width: 10px;
-    height: 20px;
-    background-color: $text-color;
-    position: fixed;
-    pointer-events: none;
-    mix-blend-mode: difference;
-    animation: blink 0.7s infinite;
+    display: none;
 }
 
 @keyframes blink {
