@@ -20,7 +20,13 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    animation: fadeIn 0.5s ease-in-out;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 h1, h2, h3 {
@@ -39,20 +45,6 @@ a {
         text-decoration: underline;
         color: lighten($link-color, 20%);
     }
-}
-
-.blink {
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 49% { opacity: 0; }
-    50%, 100% { opacity: 1; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 nav {
@@ -146,4 +138,52 @@ blockquote {
     margin-left: 0;
     font-style: italic;
     color: darken($text-color, 10%);
+}
+
+#animated-text {
+    white-space: pre-wrap;
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 0; }
+    50%, 100% { opacity: 1; }
+}
+
+// Estilos adicionales para mejorar la experiencia en dispositivos móviles
+@media (max-width: 600px) {
+    body {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    nav a {
+        display: block;
+        margin-bottom: 0.5em;
+    }
+}
+
+// Estilo para resaltar la selección de texto
+::selection {
+    background: $link-color;
+    color: $bg-color;
+}
+
+// Estilo para scrollbar personalizado
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $bg-color;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $text-color;
+    &:hover {
+        background: $link-color;
+    }
 }

@@ -1,40 +1,48 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const container = document.querySelector('.container');
-    const content = container.innerHTML;
-    container.innerHTML = '> Initializing...\n\n';
-
-    function typeWriter(text, fnCallback) {
-        const typingSpeed = Math.max(1, Math.floor(2000 / text.length)); // Ajusta la velocidad basada en la longitud del texto
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                container.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, typingSpeed);
-            } else if (typeof fnCallback == 'function') {
-                fnCallback();
+    const originalContent = container.innerHTML;
+    
+    // Extraer solo el texto visible
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = originalContent;
+    const visibleText = tempDiv.textContent || tempDiv.innerText;
+    
+    // Preparar el contenedor para la animación
+    container.innerHTML = '<div id="animated-text"></div><div class="blink">> _</div>';
+    const animatedTextElement = document.getElementById('animated-text');
+    
+    function animateText(text, duration) {
+        const charsPerFrame = Math.ceil(text.length / (duration / 16)); // 60 FPS
+        let currentIndex = 0;
+        
+        function frame() {
+            if (currentIndex < text.length) {
+                const nextIndex = Math.min(currentIndex + charsPerFrame, text.length);
+                animatedTextElement.textContent += text.slice(currentIndex, nextIndex);
+                currentIndex = nextIndex;
+                requestAnimationFrame(frame);
+            } else {
+                finishAnimation();
             }
         }
-        type();
-    }
-
-    function startTextAnimation() {
-        // Anima solo el título y un breve mensaje de bienvenida
-        const title = document.querySelector('h1').textContent;
-        const welcomeMessage = "Bienvenido al terminal. Cargando contenido...";
         
-        typeWriter(title + '\n\n' + welcomeMessage, function() {
-            // Restaura el contenido original después de la animación
-            setTimeout(() => {
-                container.innerHTML = content;
-                // Añade el cursor parpadeante
-                const cursor = document.createElement('div');
-                cursor.className = 'blink';
-                cursor.textContent = '> _';
-                container.appendChild(cursor);
-            }, 500);
-        });
+        requestAnimationFrame(frame);
     }
-
-    setTimeout(startTextAnimation, 100);
+    
+    function finishAnimation() {
+        setTimeout(() => {
+            container.innerHTML = originalContent;
+            const cursor = document.createElement('div');
+            cursor.className = 'blink';
+            cursor.textContent = '> _';
+            container.appendChild(cursor);
+        }, 200);
+    }
+    
+    // Iniciar la animación
+    const title = document.querySelector('h1').textContent;
+    const welcomeMessage = "Bienvenido al terminal. Cargando contenido...";
+    const textToAnimate = `> ${title}\n\n${welcomeMessage}`;
+    
+    animateText(textToAnimate, 1500); // 1.5 segundos para la animación
 });
