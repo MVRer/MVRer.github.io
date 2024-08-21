@@ -36,18 +36,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }, 200);
     }
     
-    // Obtener el título de forma segura
-    let title = "Terminal";
-    const titleElement = document.querySelector('title');
-    if (titleElement && titleElement.textContent) {
-        title = titleElement.textContent;
-    } else {
-        const h1Element = document.querySelector('h1');
-        if (h1Element && h1Element.textContent) {
-            title = h1Element.textContent;
-        }
-    }
-
+    // Texto a animar
+    const title = "Terminal";
     const welcomeMessage = "Bienvenido al terminal. Cargando contenido...";
     const textToAnimate = `> ${title}\n\n${welcomeMessage}`;
     
