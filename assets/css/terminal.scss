@@ -4,6 +4,7 @@
 $bg-color: #000;
 $text-color: #0f0;
 $link-color: #0ff;
+$highlight-color: #ff0;
 
 body {
     background-color: $bg-color;
@@ -19,18 +20,24 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 h1, h2, h3 {
     color: $text-color;
     text-transform: uppercase;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 a {
     color: $link-color;
     text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
     &:hover {
         text-decoration: underline;
+        color: lighten($link-color, 20%);
     }
 }
 
@@ -39,23 +46,104 @@ a {
 }
 
 @keyframes blink {
-    0% { opacity: 0; }
-    49% { opacity: 0; }
-    50% { opacity: 1; }
+    0%, 49% { opacity: 0; }
+    50%, 100% { opacity: 1; }
 }
-a {
-    color: $link-color;
-    text-decoration: none;
-    cursor: pointer;
-    &:hover {
-        text-decoration: underline;
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+nav {
+    margin-bottom: 2em;
+    a {
+        margin-right: 1em;
+        padding: 0.3em 0.5em;
+        border: 1px solid $text-color;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
     }
 }
 
-// Añade esto para dar un efecto visual cuando se pasa el mouse sobre los enlaces
-nav a, .recent-posts a, footer a {
-    transition: background-color 0.3s ease;
-    &:hover {
+.recent-posts {
+    margin-top: 2em;
+    h2 {
+        border-bottom: 1px solid $text-color;
+        padding-bottom: 0.5em;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 1em;
+        span {
+            color: $highlight-color;
+            margin-right: 1em;
+        }
+    }
+}
+
+.post {
+    margin-bottom: 2em;
+    .post-meta {
+        color: $highlight-color;
+        margin-bottom: 1em;
+    }
+}
+
+footer {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid $text-color;
+    font-size: 0.9em;
+    p {
+        margin-bottom: 0.5em;
+    }
+    a {
+        margin-right: 1em;
+    }
+}
+
+// Estilo para código en línea
+code {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+// Estilo para bloques de código
+pre {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1em;
+    overflow-x: auto;
+    border: 1px solid $text-color;
+}
+
+// Mejorar la legibilidad de las tablas
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+    th, td {
+        border: 1px solid $text-color;
+        padding: 0.5em;
+        text-align: left;
+    }
+    th {
         background-color: rgba(255, 255, 255, 0.1);
     }
+}
+
+// Estilo para citas
+blockquote {
+    border-left: 3px solid $link-color;
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+    color: darken($text-color, 10%);
 }
