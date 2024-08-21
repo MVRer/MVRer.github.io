@@ -9,7 +9,7 @@ description: >-
 theme: minima
 plugins:
   - jekyll-feed
-twitter_username: elmoro
+twitter_username: elmorocar
 github_username:  MVRer
 # Custom settings
 header_pages:
