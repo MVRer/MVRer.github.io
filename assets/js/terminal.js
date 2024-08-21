@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const container = document.querySelector('.container');
+    if (!container) return; // Si no hay contenedor, no hacemos nada
+
     const originalContent = container.innerHTML;
     
     // Preparar el contenedor para la animación
@@ -34,8 +36,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }, 200);
     }
     
-    // Iniciar la animación
-    const title = document.querySelector('title').textContent;
+    // Obtener el título de forma segura
+    let title = "Terminal";
+    const titleElement = document.querySelector('title');
+    if (titleElement && titleElement.textContent) {
+        title = titleElement.textContent;
+    } else {
+        const h1Element = document.querySelector('h1');
+        if (h1Element && h1Element.textContent) {
+            title = h1Element.textContent;
+        }
+    }
+
     const welcomeMessage = "Bienvenido al terminal. Cargando contenido...";
     const textToAnimate = `> ${title}\n\n${welcomeMessage}`;
     
