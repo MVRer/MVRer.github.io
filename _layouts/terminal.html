@@ -21,11 +21,35 @@ layout: default
         </header>
         <main>
             {{ content }}
+            
+            {% if page.url == "/" %}
+            <section class="recent-posts">
+                <h2>&gt; RECENT_POSTS</h2>
+                <ul>
+                {% for post in site.posts limit:5 %}
+                    <li>
+                        <span>[{{ post.date | date: "%Y-%m-%d" }}]</span>
+                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+                <a href="{{ '/blog' | relative_url }}">[VER_TODOS_LOS_POSTS]</a>
+            </section>
+            {% endif %}
         </main>
         <footer>
             <p>&copy; {{ site.time | date: '%Y' }} {{ site.title | upcase }} | <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+            <p>
+                {% if site.github_username %}
+                <a href="https://github.com/{{ site.github_username }}">[GITHUB]</a>
+                {% endif %}
+                {% if site.twitter_username %}
+                <a href="https://twitter.com/{{ site.twitter_username }}">[TWITTER]</a>
+                {% endif %}
+            </p>
         </footer>
         <div class="blink">&gt; _</div>
     </div>
     <script src="{{ "/assets/js/terminal.js" | relative_url }}"></script>
 </body>
+</html>
