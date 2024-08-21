@@ -43,3 +43,19 @@ a {
     49% { opacity: 0; }
     50% { opacity: 1; }
 }
+a {
+    color: $link-color;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Añade esto para dar un efecto visual cuando se pasa el mouse sobre los enlaces
+nav a, .recent-posts a, footer a {
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}

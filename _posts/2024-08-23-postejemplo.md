@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Título del Post"
+title: "Es un post de ejemplo"
 date: 2023-08-24 12:00:00 -0500
-author: Mariano Carretero
+author: MC
 tags: [tecnología, ciberseguridad, programación]
 ---
 
