@@ -6,7 +6,7 @@ permalink: /about/
 
 # [ABOUT]
 
-Juan Vázquez de Mella 327 CDMX - mariano@deltadinamica.com - 5545848332 (Celular)
+????????? - mariano@deltadinamica.com - ?????? (Celular)
 
 Estudiante de alto rendimiento de Ingeniería en Tecnologías Computacionales, enfocado a Ciberseguridad empresarial y Desarrollo de soluciones tecnológicas para empresas. Cofundador de Deltadinamica.
 
