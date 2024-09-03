@@ -14,5 +14,6 @@ El pitch consistió en la creación de una presentación breve y persuasiva, dis
 
 # Curriculum vitae actualizado
 El currículum consistió en una presentación estructurada del perfil académico y profesional, enfatizando la formación en una institución prestigiosa, la experiencia laboral en sistemas, y las habilidades en diversos lenguajes de programación y bases de datos. Se incluyeron también competencias lingüísticas, experiencia internacional y logros académicos, ofreciendo un perfil completo para oportunidades en tecnología y ciberseguridad.
+:D
 
 [Ver archivo](https://docs.google.com/document/d/1uQ17f97CrB3df0Vji4xvWpo70F2YPg3HCBucTbklYic/edit?usp=sharing)

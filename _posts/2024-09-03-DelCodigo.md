@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Del código al arte: Explorando el lado humano de mi carrera "
+title: "De C al arte"
 date: 2024-09-03 12:00:00 -0500
 author: M. C.
 tags: [ITC, BLOG]
