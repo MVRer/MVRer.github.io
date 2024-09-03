@@ -1,5 +1,5 @@
 # _config.yml
-title: ":~$  M.C."
+title: "M. C."
 email: a01029708@tec.mx
 description: >-
   Estudiante de alto rendimiento de Ingeniería en Tecnologías Computacionales,
@@ -12,11 +12,11 @@ plugins:
 twitter_username: elmorocar
 github_username:  MVRer
 # Custom settings
-header_pages:
-  - about.markdown
-  - blog.markdown
-  - editorial.md
-  - contact.md
+#header_pages:
+#  - about.markdown
+#  - blog.markdown
+#  - editorial.md
+#  - contact.md
 
 # Custom CSS
 sass:
