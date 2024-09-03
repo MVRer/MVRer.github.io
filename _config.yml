@@ -12,8 +12,8 @@ plugins:
 twitter_username: elmorocar
 github_username:  MVRer
 # Custom settings
-#header_pages:
-#  - about.markdown
+header_pages:
+  - about.md
 #  - blog.markdown
 #  - editorial.md
 #  - contact.md
