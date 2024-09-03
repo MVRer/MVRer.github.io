@@ -4,4 +4,4 @@ title: blog
 permalink: /blog/
 ---
 
-Here are the blog posts
+Work directory: /blog/
