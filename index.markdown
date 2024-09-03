@@ -2,7 +2,7 @@
 layout: terminal
 title: Home
 ---
-# ¿Quién soy?
+# ¿Quién soy? [Redactado para privacidad]
 
 Soy MC, estudiante de Ingeniería en Tecnologías Computacionales en el Tecnológico de Monterrey, enfocado en Ciberseguridad empresarial y Desarrollo de soluciones tecnológicas.
 
