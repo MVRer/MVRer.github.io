@@ -5,6 +5,7 @@ layout: terminal
 <style>
   .file-browser {
     margin: 20px 0;
+    font-size: 0.9em;
   }
   .file-browser-header {
     border-bottom: 1px solid #00ff00;
@@ -16,11 +17,9 @@ layout: terminal
     padding: 0;
   }
   .file-item {
-    padding: 5px 0;
-  }
-  .file-item:before {
-    content: "📄 ";
-    margin-right: 5px;
+    padding: 2px 0;
+    white-space: pre;
+    font-family: 'Courier New', monospace;
   }
   .file-item a {
     color: #00ff00;
@@ -29,24 +28,20 @@ layout: terminal
   .file-item a:hover {
     text-decoration: underline;
   }
-  .file-item .post-date {
-    float: right;
-    color: #888;
-  }
 </style>
 
 <div class="file-browser">
   <div class="file-browser-header">
     <span>> ls -l recent_posts</span>
   </div>
-  <ul class="file-list">
+  <div class="file-list">
+    <div class="file-item">total {{ site.posts | size }}</div>
     {% for post in site.posts limit:5 %}
-      <li class="file-item">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      </li>
+      <div class="file-item">
+-rw-r--r-- 1 M.C. users {% assign words = post.content | number_of_words %}{% if words < 1000 %}{{ words }}{% else %}{{ words | divided_by: 1000 }}.{{ words | modulo: 1000 | divided_by: 100 }}K{% endif %} {{ post.date | date: "%b %d %Y %H:%M" }} <a href="{{ post.url | relative_url }}">{{ post.title | truncate: 30 }}</a>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>
 
 {{ content }}
