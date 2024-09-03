@@ -6,6 +6,7 @@ layout: terminal
   .file-browser {
     margin: 20px 0;
     font-size: 0.9em;
+    overflow-x: auto;
   }
   .file-browser-header {
     border-bottom: 1px solid #00ff00;
@@ -18,7 +19,8 @@ layout: terminal
   }
   .file-item {
     padding: 2px 0;
-    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
     font-family: 'Courier New', monospace;
   }
   .file-item a {
@@ -32,6 +34,24 @@ layout: terminal
     border-bottom: 1px solid #00ffff;
     color: #00ffff;
   }
+  
+  @media (max-width: 600px) {
+    .file-browser {
+      font-size: 0.8em;
+    }
+    .file-item {
+      display: flex;
+      flex-wrap: wrap;
+      white-space: normal;
+    }
+    .file-item-info {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+    .file-item-link {
+      width: 100%;
+    }
+  }
 </style>
 
 <div class="file-browser">
@@ -42,7 +62,8 @@ layout: terminal
     <div class="file-item">total {{ site.posts | size }}</div>
     {% for post in site.posts limit:5 %}
       <div class="file-item">
--rw-r--r-- M.C. users {% assign words = post.content | number_of_words %}{% if words < 1000 %}{{ words }}{% else %}{{ words | divided_by: 1000 }}.{{ words | modulo: 1000 | divided_by: 100 }}K{% endif %} {{ post.date | date: "%b %d %Y" }} <a href="{{ post.url | relative_url }}">{{ post.title | truncate: 30 }}</a>
+        <span class="file-item-info">-rw-r--r-- M.C. users {% assign words = post.content | number_of_words %}{% if words < 1000 %}{{ words }}{% else %}{{ words | divided_by: 1000 }}.{{ words | modulo: 1000 | divided_by: 100 }}K{% endif %} {{ post.date | date: "%b %d %Y" }}</span>
+        <span class="file-item-link"><a href="{{ post.url | relative_url }}">{{ post.title | truncate: 30 }}</a></span>
       </div>
     {% endfor %}
   </div>
