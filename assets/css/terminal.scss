@@ -7,16 +7,10 @@ $highlight-color: #ffff00;
 $date-color: #888;
 $terminal-header: #333;
 $code-bg: #1a1a1a;
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    overflow: hidden;
 }
 
 body {
@@ -38,9 +32,6 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
-    height: calc(100vh - 40px);
-    display: flex;
-    flex-direction: column;
 }
 
 .terminal-header {
@@ -90,8 +81,6 @@ nav {
 
 .terminal-content {
     padding: 20px;
-    overflow-y: auto;
-    flex-grow: 1;
 
     // Estilos para elementos Markdown
     h1, h2, h3, h4, h5, h6 {
@@ -261,9 +250,6 @@ footer {
     body {
         font-size: 16px;
         padding: 10px;
-    }
-    .container {
-        height: calc(100vh - 20px);
     }
     nav {
         flex-direction: column;
