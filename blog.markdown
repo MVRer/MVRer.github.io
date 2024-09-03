@@ -1,5 +1,5 @@
 ---
-layout: terminal
+layout: recent_posts
 title: blog
 permalink: /blog/
 ---

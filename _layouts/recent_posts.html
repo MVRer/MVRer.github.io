@@ -1,0 +1,52 @@
+---
+layout: terminal
+---
+
+<style>
+  .file-browser {
+    margin: 20px 0;
+  }
+  .file-browser-header {
+    border-bottom: 1px solid #00ff00;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  .file-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .file-item {
+    padding: 5px 0;
+  }
+  .file-item:before {
+    content: "📄 ";
+    margin-right: 5px;
+  }
+  .file-item a {
+    color: #00ff00;
+    text-decoration: none;
+  }
+  .file-item a:hover {
+    text-decoration: underline;
+  }
+  .file-item .post-date {
+    float: right;
+    color: #888;
+  }
+</style>
+
+<div class="file-browser">
+  <div class="file-browser-header">
+    <span>> ls -l recent_posts</span>
+  </div>
+  <ul class="file-list">
+    {% for post in site.posts limit:5 %}
+      <li class="file-item">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{{ content }}
