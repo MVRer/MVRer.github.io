@@ -61,5 +61,17 @@
     </div>
     <div class="cursor"></div>
     <script src="{{ "/assets/js/terminal.js" | relative_url }}"></script>
+    <script>
+        // Script para abrir enlaces en nueva pestaña
+        document.addEventListener('DOMContentLoaded', function() {
+            var content = document.querySelector('.terminal-content');
+            content.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('http')) {
+                    e.preventDefault();
+                    window.open(e.target.href, '_blank');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
