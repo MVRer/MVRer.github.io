@@ -9,6 +9,7 @@ description: >-
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-external-links
 twitter_username: elmorocar
 github_username:  MVRer
 # Custom settings
@@ -24,3 +25,5 @@ sass:
   style: compressed
 
 future: true
+whitelist:
+  - jekyll-external-links
